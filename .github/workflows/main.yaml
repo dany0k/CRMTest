@@ -89,6 +89,6 @@ jobs:
             docker pull zhmash/case-lab-java-client-self-service:latest
             docker run -d --name self-client-service -p 8081:8081 
             -e CLIENT_ACCESS_TOKEN=${{ secrets.CLIENT_ACCESS_TOKEN }} 
-            -e CLIENT_ACCESS_TOKEN=${{ secrets.CLIENT_REFRESH_TOKEN }} 
-            -e CLIENT_ACCESS_TOKEN=${{ secrets.JWT_TECHNICAL_USER }}
+            -e CLIENT_REFRESH_TOKEN=${{ secrets.CLIENT_REFRESH_TOKEN }} 
+            -e JWT_TECHNICAL_USER=${{ secrets.JWT_TECHNICAL_USER }}
             zhmash/case-lab-java-client-self-service:latest
