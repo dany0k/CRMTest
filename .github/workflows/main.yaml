@@ -79,13 +79,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.4
+      - name: Connect with SSH and Deploy
+        uses: appleboy/ssh-action@v0.1.8
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy to remote server
-        run: |
-          ssh -o StrictHostKeyChecking=no -i /home/user/.ssh/authorized_keys root@45.130.43.231 'docker pull zhmash/case-lab-java-client-self-service:latest'
-          ssh -o StrictHostKeyChecking=no -i /home/user/.ssh/authorized_keys root@45.130.43.231 'docker run -d --name self-client-service -p 8081:8081 zhmash/case-lab-java-client-self-service:latest'
-          
+          host: 45.130.43.231
+          username: ${{ secrets.REMOTE_SERVER_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            docker pull zhmash/case-lab-java-client-self-service:latest
+            docker run -d --name self-client-service -p 8081:8081 zhmash/case-lab-java-client-self-service:latest
