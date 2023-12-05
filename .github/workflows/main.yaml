@@ -86,6 +86,6 @@ jobs:
 
       - name: Deploy to remote server
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY_PATH }} root@45.130.43.231 'docker pull zhmash/case-lab-java-client-self-service:latest'
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY_PATH }} root@45.130.43.231 'docker run -d --name self-client-service zhmash/case-lab-java-client-self-service:latest'
+          ssh -o StrictHostKeyChecking=no -i /home/user/.ssh/authorized_keys root@45.130.43.231 'docker pull zhmash/case-lab-java-client-self-service:latest'
+          ssh -o StrictHostKeyChecking=no -i /home/user/.ssh/authorized_keys root@45.130.43.231 'docker run -d --name self-client-service -p 8081:8081 zhmash/case-lab-java-client-self-service:latest'
           
