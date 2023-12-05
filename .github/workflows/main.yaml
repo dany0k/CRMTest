@@ -31,6 +31,7 @@ jobs:
       - name: Push Docker Image for Discovery service
         uses: docker/build-push-action@v3
         with:
+          context: .
           push: true
           platform: linux/amd64
           file: ./Discovery-Service/Dockerfile
@@ -44,6 +45,7 @@ jobs:
       - name: Push Docker Image for Discovery service
         uses: docker/build-push-action@v3
         with:
+          context: .
           push: true
           platform: linux/amd64
           file: ./CRM/Dockerfile
@@ -57,6 +59,7 @@ jobs:
       - name: Push Docker Image for Discovery service
         uses: docker/build-push-action@v3
         with:
+          context: .
           push: true
           platform: linux/amd64
           file: ./Client-Self-Service/Dockerfile
