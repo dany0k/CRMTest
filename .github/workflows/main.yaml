@@ -1,0 +1,65 @@
+name: CI/CD pipelines
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Discovery Service
+
+      - name: Build Discovery service with Maven
+        run: mvn package -Dmaven.test.skip=true --file Discovery-Service/pom.xml
+
+      - name: Push Docker Image for Discovery service
+        uses: actions/docker/cli@v3
+        with:
+          args: push zhmash/case-lab-java-discovery-service:latest
+
+      # CRM Service
+
+      - name: Build CRM service with Maven
+        run: mvn package -Dmaven.test.skip=true --file CRM/pom.xml
+
+      - name: Push Docker Image for Discovery service
+        uses: actions/docker/cli@v3
+        with:
+          args: push zhmash/case-lab-java-crm:latest
+
+      # Client Self Service
+
+      - name: Build Client Self Service with Maven
+        run: mvn package -Dmaven.test.skip=true --file Client-Self-Service/pom.xml
+
+      - name: Push Docker Image for Discovery service
+        uses: actions/docker/cli@v3
+        with:
+          args: push zhmash/case-lab-java-client-self-service:latest
+
+#  deploy:
+#    runs-on: ubuntu-latest
+#    needs: build
+#
+#    steps:
+#      - name: Checkout Repository
+#        uses: actions/checkout@v2
+#
+#      - name: Deploy Discovery service to Kubernetes
+#        run: |
+#          kubectl apply -f k8s-deployment-discovery.yml
+#          kubectl rollout restart discovery-service
+      
