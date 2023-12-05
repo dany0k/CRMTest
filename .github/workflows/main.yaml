@@ -44,9 +44,6 @@ jobs:
           file: Discovery-Service/Dockerfile
           push: true
           tags: zhmash/case-lab-java-discovery-service:latest
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
       # CRM Service
 
@@ -60,9 +57,6 @@ jobs:
           push: true
           file: CRM/Dockerfile
           tags: zhmash/case-lab-java-crm:latest
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
       # Client Self Service
 
@@ -76,9 +70,6 @@ jobs:
           push: true
           file: Client-Self-Service/Dockerfile
           tags: zhmash/case-lab-java-client-self-service:latest
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
 #  deploy:
 #    runs-on: ubuntu-latest
