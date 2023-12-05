@@ -41,6 +41,3 @@ volumes:
 networks:
   case-lab:
     driver: bridge
-
-
-
