@@ -43,8 +43,7 @@ jobs:
           context: .
           file: Discovery-Service/Dockerfile
           push: true
-          platform: linux/amd64
-          tag: zhmash/case-lab-java-discovery-service:latest
+          tags: zhmash/case-lab-java-discovery-service:latest
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -59,9 +58,8 @@ jobs:
         with:
           context: .
           push: true
-          platform: linux/amd64
           file: CRM/Dockerfile
-          tag: zhmash/case-lab-java-crm:latest
+          tags: zhmash/case-lab-java-crm:latest
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -76,9 +74,8 @@ jobs:
         with:
           context: .
           push: true
-          platform: linux/amd64
           file: Client-Self-Service/Dockerfile
-          tag: zhmash/case-lab-java-client-self-service:latest
+          tags: zhmash/case-lab-java-client-self-service:latest
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
