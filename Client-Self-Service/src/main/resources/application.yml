@@ -5,7 +5,7 @@ spring:
     name: client-self-service
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://45.130.43.231/self-client
+    url: jdbc:postgresql://localhost/self-client
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
   jpa:
