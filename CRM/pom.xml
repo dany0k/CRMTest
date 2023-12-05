@@ -201,7 +201,7 @@
                 <version>${liquibase.version}</version>
                 <configuration>
                     <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://localhost:5432/</url>
+                    <url>jdbc:postgresql://5.35.83.16:5432/</url>
                     <username>postgres</username>
                     <password>postgres</password>
                     <outputChangeLogFile>src/main/resources/liquibase-outputChangeLog.xml</outputChangeLogFile>
