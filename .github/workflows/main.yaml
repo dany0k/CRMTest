@@ -71,16 +71,34 @@ jobs:
           file: Client-Self-Service/Dockerfile
           tags: zhmash/case-lab-java-client-self-service:latest
 
-#  deploy:
-#    runs-on: ubuntu-latest
-#    needs: build
-#
-#    steps:
-#      - name: Checkout Repository
-#        uses: actions/checkout@v2
-#
-#      - name: Deploy Discovery service to Kubernetes
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+
+#      - name: Install sshpass
+#        run: sudo apt-get install -y sshpass
+
+      - name: Pull  Discovery Service Docker Image from DockerHub
+        run: zhmash/case-lab-java-discovery-service:latest
+
+      - name: Save Discovery Service Docker Image
+        run: docker save -o discovery-service.tar zhmash/case-lab-java-discovery-service:latest
+
+      - name: Copy Discovery Service Image to Remote Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_SERVER_HOST }}
+          username: ${{ secrets.REMOTE_SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: ./discovery-service.tar
+          target: /home/user/project/discovery-service.tar
+
+#      - name: SSH into Remote Server and Load Docker Image
+#        run: ssh -i ${{ secrets.REMOTE_SERVER_USERNAME }}@${{ secrets.REMOTE_SERVER_HOST }} \
+#          "docker load -i /path/to/destination/image.tar"
+
+#      - name: Run Discovery Service Container on Remote Server
 #        run: |
-#          kubectl apply -f k8s-deployment-discovery.yml
-#          kubectl rollout restart discovery-service
-      
+#          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.REMOTE_SERVER_USERNAME }}@${{ secrets.REMOTE_SERVER_HOST }} \
+#                      "docker run -d -p 8080:80 zhmash/case-lab-java-discovery-service:latest"
