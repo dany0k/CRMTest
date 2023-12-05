@@ -33,7 +33,7 @@ jobs:
         with:
           push: true
           platform: linux/amd64
-          file: Discovery-Service/Dockerfile
+          file: ./Discovery-Service/Dockerfile
           tag: zhmash/case-lab-java-discovery-service:latest
 
       # CRM Service
@@ -46,7 +46,7 @@ jobs:
         with:
           push: true
           platform: linux/amd64
-          file: CRM/Dockerfile
+          file: ./CRM/Dockerfile
           tag: zhmash/case-lab-java-crm:latest
 
       # Client Self Service
@@ -59,7 +59,7 @@ jobs:
         with:
           push: true
           platform: linux/amd64
-          file: Client-Self-Service/Dockerfile
+          file: ./Client-Self-Service/Dockerfile
           tag: zhmash/case-lab-java-client-self-service:latest
 
 #  deploy:
