@@ -32,6 +32,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./Discovery-Service
+          file: ./Discovery-Service/Dockerfile
           push: true
           platform: linux/amd64
           tag: zhmash/case-lab-java-discovery-service:latest
@@ -50,6 +51,7 @@ jobs:
           context: ./CRM
           push: true
           platform: linux/amd64
+          file: ./CRM/Dockerfile
           tag: zhmash/case-lab-java-crm:latest
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -66,6 +68,7 @@ jobs:
           context: ./Client-Self-Service
           push: true
           platform: linux/amd64
+          file: ./Client-Self-Service/Dockerfile
           tag: zhmash/case-lab-java-client-self-service:latest
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
