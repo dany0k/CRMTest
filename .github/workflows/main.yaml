@@ -50,7 +50,7 @@ jobs:
       - name: Build CRM service with Maven
         run: mvn package -Dmaven.test.skip=true --file CRM/pom.xml
 
-      - name: Push Docker Image for Discovery service
+      - name: Push Docker Image for CRM service
         uses: docker/build-push-action@v3
         with:
           context: .
@@ -63,7 +63,7 @@ jobs:
       - name: Build Client Self Service with Maven
         run: mvn package -Dmaven.test.skip=true --file Client-Self-Service/pom.xml
 
-      - name: Push Docker Image for Discovery service
+      - name: Push Docker Image for Client Self service
         uses: docker/build-push-action@v3
         with:
           context: .
