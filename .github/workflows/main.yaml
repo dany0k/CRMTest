@@ -42,7 +42,7 @@ jobs:
         run: mvn package -Dmaven.test.skip=true --file CRM/pom.xml
 
       - name: Push Docker Image for Discovery service
-        uses: actions/docker/cli@v3
+        uses: docker/build-push-action@v3
         with:
           push: true
           platform: linux/amd64
@@ -55,7 +55,7 @@ jobs:
         run: mvn package -Dmaven.test.skip=true --file Client-Self-Service/pom.xml
 
       - name: Push Docker Image for Discovery service
-        uses: actions/docker/cli@v3
+        uses: docker/build-push-action@v3
         with:
           push: true
           platform: linux/amd64
