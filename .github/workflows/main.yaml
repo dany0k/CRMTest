@@ -92,8 +92,7 @@ jobs:
         run: docker save -o discovery-service.tar zhmash/case-lab-java-discovery-service:latest
 
       - name: Remove Existing Tar File on Remote Server
-        run: sshpass -p ${{ secrets.SSH_PASSWORD }} \ 
-          ssh ${{ secrets.REMOTE_SERVER_USERNAME }}@${{ secrets.REMOTE_SERVER_HOST }} 'rm -f /home/user/project/discovery-service.tar'
+        run: sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.REMOTE_SERVER_USERNAME }}@${{ secrets.REMOTE_SERVER_HOST }} 'rm -f /home/user/project/discovery-service.tar'
 
       - name: Copy Discovery Service Image to Remote Server
         uses: appleboy/scp-action@master
