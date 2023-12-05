@@ -86,15 +86,15 @@ jobs:
           username: ${{ secrets.REMOTE_SERVER_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            docker stop discovery-service
-            docker rm discovery-service
-            docker stop crm-service
-            docker rm crm-service
-            docker stop self-client-service
-            docker rm self-client-service
-            docker rmi zhmash/case-lab-java-discovery-service:latest
-            docker rmi zhmash/case-lab-java-crm:latest
-            docker rmi zhmash/case-lab-java-client-self-service:latest
+            docker stop discovery-service || true
+            docker rm discovery-service || true
+            docker stop crm-service || true
+            docker rm crm-service || true
+            docker stop self-client-service || true
+            docker rm self-client-service || true
+            docker rmi zhmash/case-lab-java-discovery-service:latest || true
+            docker rmi zhmash/case-lab-java-crm:latest || true
+            docker rmi zhmash/case-lab-java-client-self-service:latest || true
 
       # Discovery Service
 
