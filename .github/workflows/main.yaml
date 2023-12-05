@@ -130,7 +130,8 @@ jobs:
             -e REFRESH_TOKEN=${{ secrets.REFRESH_TOKEN }} \
             -e MINIO_ACCESS=${{ secrets.MINIO_ACCESS }} \
             -e MINIO_SECRET=${{ secrets.MINIO_SECRET }} \
-            -e MINIO_URL=${{ secrets.MINIO_URL }}
+            -e MINIO_URL=${{ secrets.MINIO_URL }} \
+            zhmash/case-lab-java-crm:latest
 
       # Client Self Service
 
